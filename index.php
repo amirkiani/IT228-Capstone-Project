@@ -61,7 +61,7 @@ echo '<img src="'.$selectedImages.'">';
 ?>
 
     <blockquote>
-Welcome to TV Planet! We know 2020 was rough for everyone. So we are showing you the very best TV shows of 2020 so you can take your mind off and relax. Our critics watched all the top shows of 2020 and listed them for you. So you don't have to waste your time watching duds! 
+Welcome to Raja Executive Fitness! We will take you to the next level with our passion and knowledge! You made the best decision you ever did regarding fitness!
 
 </blockquote>
 

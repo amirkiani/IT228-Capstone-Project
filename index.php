@@ -1,29 +1,71 @@
-<?php include "includes/header.php"?>
-<h1>Welcome</h1>
-<p>Are you tired of same personal trainer types that follow the same boring formula and ask you to go to the gym for hours every day of the week? You are in the right place!</p>
+<?php
+session_start();
 
-<p>At Raja Executive Fitness we make individualized plans for every client using exercise science backed by NASM (National Academy of Sports Medicine). You will get better results in less time to fit your busy lifestyles!</p>
+if(!isset($_SESSION['UserName'])) {
+    $_SESSION['msg'] = 'You must log in first!';
+    header('Location: login.php');
+}
 
-</section>
+if(isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['UserName']);
+    header('Location: login.php');
+}
+// start includes here
+include('includes/config.php');
+include('includes/header.php');
 
-<!-- END LEFT COL -->
+?>
 
-<!-- START RIGHT COL -->
-<aside>
- <h2>About Hamza Kiani</h2>
-    <p>Originally from Michigan, I was a Red Cross certified lifeguard for three summers in lovely Mackinac Island. I am a National Academy of Sports Medicine (NASM) certified personal trainer and have over a decade of experience in the fitness industry. I recently relocated to Seattle and am currently employed as an aquatic instructor for special needs children.</p>
-
-<p>On my rare downtime, you can catch me at professional wrestling events cheering on the good guys and booing the bad guys.</p>
-<div class="row">
-  <div class="column">
-    <img src="images/hamza2.PNG" alt="Hamza" style="width:90%">
-  </div>
-  <div class="column">
-    <img src="images/hamza3.PNG" alt="Hamza-2" style="width:90%">
-  </div>
-  <div class="column">
-    <img src="images/hamza4.PNG" alt="Hamza-3" style="width:90%">
-  </div>
+<?php
+// Notification message
+if(isset($_SESSION['success'])) :?>
+<div class="success">
+<h3>
+    <?php
+    echo $_SESSION['success'];
+    unset($_SESSION['success']);
+?>
+</h3>
 </div>
+<?php endif ?>
 
-<?php include "includes/footer.php"?>
+
+
+<?php
+    if(isset($_SESSION['UserName'])) : ?>
+    <div class="welcome-logout">
+    <h3> Welcome, 
+        
+    <?php echo $_SESSION['UserName']; ?>
+    <br> You are now logged in!
+    </h3>
+    <p><a href="index.php?logout='1'">Log out!</a></p>
+    </div>
+
+    <?php endif ?>
+
+<div id="wrapper">
+    <h1 class="<?php echo $center ;    ?>"><?php echo $mainHeadLine;  ?></h1>
+    <img class="image" src="images/welcome.png" alt="welcome">
+
+<?php $photos[0] = 'photo1';
+$photos[1] = 'photo2';
+$photos[2] = 'photo3';
+$photos[3] = 'photo4';
+$photos[4] = 'photo5';
+
+$i = rand(0, count($photos)-1);
+$selectedImages = 'images/'.$photos[$i].'.jpg';
+echo '<img src="'.$selectedImages.'">';
+?>
+
+    <blockquote>
+Welcome to TV Planet! We know 2020 was rough for everyone. So we are showing you the very best TV shows of 2020 so you can take your mind off and relax. Our critics watched all the top shows of 2020 and listed them for you. So you don't have to waste your time watching duds! 
+
+</blockquote>
+
+  
+<?php
+include('includes/footer.php');
+?>

@@ -81,7 +81,7 @@ if($user) {
 if(count($errors) == 0) {
 $Password = md5($Password_1);
 
-$query = "INSERT INTO Users (`UserID`, `FirstName`, `LastName`, `UserName`, `Email`, `Password`) VALUES (NULL, '$FirstName', '$LastName', '$UserName', '$Email', '$Password') ";
+$query = "INSERT INTO Users (FirstName, LastName, UserName, Email, Password) VALUES ('$FirstName', '$LastName', '$UserName', '$Email', '$Password') ";
 mysqli_query($db, $query);
 
     $_SESSION['UserName'] = $UserName;

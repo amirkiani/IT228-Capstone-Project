@@ -2,6 +2,7 @@
 
 session_start();
 include('includes/config.php');
+include('credentials.php');
 
 // initialize the variables
 
@@ -108,13 +109,15 @@ if(isset($_POST['login_user'])) {
     if(count($errors) == 0) {
         $Password = md5($Password);
     
-        $query = "SELECT * FROM Users WHERE `UserName` = '$UserName' and `Password` = '$Password' " ;
+        
+        $query = "SELECT * FROM Users WHERE UserName = '$UserName' and Password = '$Password' " ;
+
 
         $results = mysqli_query($db, $query);
 
         if(mysqli_num_rows($results) == 1) {
             $_SESSION['UserName'] = $UserName;
-            $_SESSION['successs'] = $success;
+            $_SESSION['success'] = $success;
 
 header('Location: index.php') ;
 

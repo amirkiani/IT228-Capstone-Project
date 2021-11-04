@@ -26,6 +26,7 @@ include('includes/errors.php');
 onclick="window.location.href = '<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>' ">RESET</button>
 
 
+
 </fieldset>
 
 </form>
